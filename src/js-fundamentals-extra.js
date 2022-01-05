@@ -139,10 +139,12 @@ function checkTransactions(array, startBalance, overdraft) {
 function filmsInGenre (array, genre) {
   let filmArray = []
   for(let i = 0; i < array.length; i++) {
-    if (array[i].genres === genre) {
+    for(let j = 0; j < array[i].genres.length; j++) {
+    if (array[i].genres[j] === genre) {
       filmArray.push(array[i].name)
     } 
   }
+}
   return filmArray
 }
 
