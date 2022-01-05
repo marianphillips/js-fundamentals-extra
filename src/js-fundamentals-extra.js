@@ -7,7 +7,7 @@
 // with a reference to your function.
 //
 // TODO: write code below
-
+const secondsInHours = (hours) => (hours*3600)
 
 
 // MilesTravelled
@@ -23,6 +23,7 @@
 //
 // TODO: write code below
 
+const milesTravelled = (speed, time) => (Math.ceil(speed*(time/60)))
 
 
 // KilometersToMiles
@@ -37,7 +38,7 @@
 //
 // TODO: write code below
 
-
+const kilometresToMiles = (km) => {return Math.round(km/1.6)}
 
 // MakeSentence
 //
@@ -53,7 +54,14 @@
 //
 // TODO: write code below
 
+function makeSentence(str) {
+  let sentence = str[0].toUpperCase() + str.substring(1)
+  if (str[str.length - 1] === "." || str[str.length - 1] === "?" || str[str.length - 1] === "!") {
+    return sentence
+  }
+    return sentence + "."
 
+}
 
 // FileExtension
 //
@@ -67,7 +75,15 @@
 //
 // TODO: write code below
 
-
+function fileExtension(str) {
+  let file = ""
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === ".") {
+      file = str.substring(i+1)
+    }
+  }
+  return file
+}
 
 // Range
 //
@@ -80,7 +96,10 @@
 //
 // TODO: write code below
 
-
+function range (array) {
+  let newArray = array.sort((a,b) => (a-b))
+  return newArray[newArray.length - 1] - newArray[0]
+}
 
 // CheckTransactions
 //
@@ -99,7 +118,10 @@
 //
 // TODO: write code below
 
-
+function checkTransactions(array, startBalance, overdraft) {
+  const endBalance = array.reduce((a,b) => a + b, startBalance)
+  return endBalance >= (overdraft*(-1))
+}
 
 // FilmsInGenre
 //
@@ -114,31 +136,39 @@
 //
 // TODO: write code below
 
-
+function filmsInGenre (array, genre) {
+  let filmArray = []
+  for(let i = 0; i < array.length; i++) {
+    if (array[i].genres === genre) {
+      filmArray.push(array[i].name)
+    } 
+  }
+  return filmArray
+}
 
 // TODO: change undefined to be the name of the functions you defined
 module.exports = {
   //SecondsInHours
-  a: undefined,
+  a: secondsInHours,
 
   //MilesTravelled,
-  b: undefined,  
+  b: milesTravelled,  
 
   //KilometersToMiles,
-  c: undefined, 
+  c: kilometresToMiles, 
 
   //MakeSentence
-  d: undefined, 
+  d: makeSentence, 
 
   //FileExtension
-  e: undefined,
+  e: fileExtension,
 
   //Range
-  f: undefined,
+  f: range,
 
   //CheckTransactions
-  g: undefined,
+  g: checkTransactions,
 
   //FilmsInGenre
-  h: undefined,
+  h: filmsInGenre,
 }
